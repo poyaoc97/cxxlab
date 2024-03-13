@@ -1,0 +1,50 @@
+BasedOnStyle: LLVM
+AlignConsecutiveAssignments:
+  Enabled:         true
+  AcrossEmptyLines: false
+  AcrossComments:  false
+  AlignCompound:   false
+  AlignFunctionPointers: false
+  PadOperators:    true
+AlignConsecutiveBitFields:
+  Enabled:         true
+  AcrossEmptyLines: false
+  AcrossComments:  false
+  AlignCompound:   false
+  AlignFunctionPointers: false
+  PadOperators:    false
+AlignEscapedNewlines: Right
+AlwaysBreakTemplateDeclarations: MultiLine
+AllowShortBlocksOnASingleLine: Empty
+AllowShortFunctionsOnASingleLine: All
+AlignConsecutiveShortCaseStatements:
+  Enabled:         true
+  AcrossEmptyLines: false
+  AcrossComments:  true
+  AlignCaseColons: false
+AllowShortCaseLabelsOnASingleLine: true
+BreakAfterAttributes: Always
+ColumnLimit:     100
+DerivePointerAlignment: false
+EmptyLineAfterAccessModifier: Never
+EmptyLineBeforeAccessModifier: Always
+IncludeBlocks:   Regroup
+IndentGotoLabels: false
+IndentPPDirectives: AfterHash
+IndentWrappedFunctionNames: true
+InsertBraces: true
+InsertNewlineAtEOF: true
+IntegerLiteralSeparator:
+  Binary:          8
+  BinaryMinDigits: 0
+  Decimal:         3
+  DecimalMinDigits: 0
+  Hex:             2
+  HexMinDigits:    0
+KeepEmptyLinesAtTheStartOfBlocks: false
+LineEnding: LF
+PackConstructorInitializers: NextLine
+ReferenceAlignment: Pointer
+RemoveBracesLLVM: false
+Standard: Latest
+PointerAlignment: Left

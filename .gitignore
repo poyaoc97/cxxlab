@@ -1,0 +1,25 @@
+# macOS specific files.
+.DS_store
+
+# Nested build directory
+/build*
+/compile_commands.json
+
+# VSCode config files.
+.vscode
+
+# clangd index
+.clangd
+
+.cache
+
+*.ll
+*.bc
+*.spv
+*.png
+a.out
+/install*
+
+*.tar.gz
+*.tar.xz
+*.zip

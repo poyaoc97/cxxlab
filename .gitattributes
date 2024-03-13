@@ -1,0 +1,7 @@
+*.cpp text eof=lf linguist-language=C++
+*.h text eof=lf linguist-language=C++
+*.hpp text eof=lf linguist-language=C++
+*.cppm text eof=lf linguist-language=C++
+*.cmake text eof=lf linguist-language=CMake
+CMakeLists.txt text eof=lf linguist-language=CMake
+*.json text eof=lf linguist-language=JSON
