@@ -1,0 +1,77 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 28,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "default",
+      "displayName": "Default Config",
+      "description": "Default build using Ninja generator",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/static-rel",
+      "installDir": "${sourceDir}/install/static-rel",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": {
+          "value": "Release"
+        },
+        "CMAKE_CXX_COMPILER": {
+          "value": "clang++"
+        },
+        "CMAKE_LINKER_TYPE": {
+          "value": "LLD"
+        }
+      }
+    },
+    {
+      "name": "Homebrew",
+      "inherits": "default",
+      "hidden": true,
+      "environment": {
+        "PATH": "$env{HOMEBREW_PREFIX}/opt/llvm/bin:$penv{PATH}"
+      }
+    },
+    {
+      "name": "mac-common",
+      "inherits": "Homebrew",
+      "hidden": true,
+      "environment": {
+        "PATH": "$env{HOMEBREW_PREFIX}/opt/llvm/bin:$penv{PATH}"
+      },
+      "cacheVariables": {
+        "CMAKE_LIBTOOL": {
+          "value": "$env{HOMEBREW_PREFIX}/opt/llvm/bin/llvm-libtool-darwin"
+        },
+        "CMAKE_AR": {
+          "value": "$env{HOMEBREW_PREFIX}/opt/llvm/bin/llvm-ar"
+        }
+      },
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Darwin"
+      }
+    },
+    {
+      "name": "macOS-static",
+      "displayName": "macOS w/ Homebrew, link to static libc++",
+      "inherits": "mac-common",
+      "binaryDir": "${sourceDir}/build/static-rel",
+      "installDir": "${sourceDir}/install/static-rel"
+    },
+    {
+      "name": "macOS-dyn",
+      "displayName": "macOS w/ Homebrew, link to dynamic libc++",
+      "inherits": "mac-common",
+      "binaryDir": "${sourceDir}/build/dyn-rel",
+      "installDir": "${sourceDir}/install/dyn-rel",
+      "cacheVariables": {
+        "CXXLAB_LINK_LIBCXX_DYLIB": {
+          "value": "ON"
+        }
+      }
+    }
+  ]
+}
