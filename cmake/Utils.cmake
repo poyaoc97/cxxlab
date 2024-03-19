@@ -12,7 +12,11 @@ macro(add_modular_lib TARGET_NAME)
     PROPERTIES CXX_SCAN_FOR_MODULES ON)
   target_link_libraries(${TARGET_NAME} PRIVATE std-cxx-modules)
 
-  install(TARGETS ${TARGET_NAME} DESTINATION ${CMAKE_INSTALL_LIBDIR})
+  install(TARGETS ${TARGET_NAME}
+    # use the default destinations
+    ARCHIVE LIBRARY RUNTIME
+    # empty destination suppresses installing BMIs
+    CXX_MODULES_BMI DESTINATION "")
 endmacro()
 
 macro(add_nonmodular_executable TARGET_NAME)
@@ -26,7 +30,11 @@ macro(add_nonmodular_executable TARGET_NAME)
     DEPENDS ${TARGET_NAME})
   add_dependencies(run-all run-${TARGET_NAME})
 
-  install(TARGETS ${TARGET_NAME} DESTINATION ${CMAKE_INSTALL_BINDIR})
+  install(TARGETS ${TARGET_NAME}
+    # use the default destinations
+    RUNTIME
+    # empty destination suppresses installing BMIs
+    CXX_MODULES_BMI DESTINATION "")
 endmacro()
 
 macro(add_modular_executable TARGET_NAME)
